@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 // Images
 import MenuImg from '../../images/menu.svg';
@@ -34,18 +35,18 @@ const Header: React.FC = () => {
           </button>
         </div>
         <div className="hidden md:flex flex-col md:flex-row md:ml-auto mt-3 md:mt-0" id="navbar-collapse">
-          <a href='/#'
+          <Link to='/'
             className="p-1 px-2 lg:px-4 md:mx-2 text-white rounded hover:underline hover:text-gray-300 transition-colors duration-300" >
             Home
-          </a>
-          <a href='/#'
+          </Link>
+          <Link to='/movies'
             className="p-1 px-2 lg:px-4 md:mx-2 text-white rounded hover:underline hover:text-gray-300 transition-colors duration-300" >
             Movies
-          </a>
-          <a href="/#"
+          </Link>
+          <Link to="/tvshows"
             className="p-1 px-2 lg:px-4 md:mx-2 text-white rounded hover:underline hover:text-gray-300 transition-colors duration-300" >
             TV Shows
-          </a>
+          </Link>
         </div>
       </div>
     </div>
