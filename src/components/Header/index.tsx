@@ -10,7 +10,9 @@ const Header: React.FC = () => {
       <div className="container md:flex md:items-center">
         <div className="flex justify-between items-center">
           <a
-            href="/#"
+            target="_blank"
+            rel="noreferrer"
+            href="https://www.themoviedb.org/"
             className="p-1 pl-2 sm:pl-16 md:pl-32 lg:pl-80"
             >
             <img
@@ -32,6 +34,10 @@ const Header: React.FC = () => {
           </button>
         </div>
         <div className="hidden md:flex flex-col md:flex-row md:ml-auto mt-3 md:mt-0" id="navbar-collapse">
+          <a href='/#'
+            className="p-1 px-2 lg:px-4 md:mx-2 text-white rounded hover:underline hover:text-gray-300 transition-colors duration-300" >
+            Home
+          </a>
           <a href='/#'
             className="p-1 px-2 lg:px-4 md:mx-2 text-white rounded hover:underline hover:text-gray-300 transition-colors duration-300" >
             Movies
