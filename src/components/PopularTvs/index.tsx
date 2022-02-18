@@ -30,7 +30,7 @@ const PopularTvs: React.FC = () => {
       <div>
         <h1 className='text-4xl sm:text-5xl text-left font-bold'>Popular TV Shows</h1>
       </div>
-      <div className='flex overflow-x-auto'>
+      <div className='flex overflow-x-scroll scrollbar'>
         {state.results.map(tv => (
           <Thumbnail
             key={tv.id}

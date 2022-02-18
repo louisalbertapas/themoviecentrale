@@ -30,7 +30,7 @@ const PopularMovies : React.FC = () => {
     <div>
       <h1 className='text-4xl sm:text-5xl text-left font-bold'>Popular Movies</h1>
     </div>
-    <div className='flex overflow-x-auto'>
+    <div className='flex overflow-x-scroll scrollbar'>
       {state.results.map(movie => (
         <Thumbnail
           key={movie.id}
