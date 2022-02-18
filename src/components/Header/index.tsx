@@ -47,6 +47,10 @@ const Header: React.FC = () => {
             className="p-1 px-2 lg:px-4 md:mx-2 text-white rounded hover:underline hover:text-gray-300 transition-colors duration-300" >
             TV Shows
           </Link>
+          <Link to="/about"
+            className="p-1 px-2 lg:px-4 md:mx-2 text-white rounded hover:underline hover:text-gray-300 transition-colors duration-300" >
+            About
+          </Link>
         </div>
       </div>
     </div>

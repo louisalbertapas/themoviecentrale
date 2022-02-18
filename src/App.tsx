@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
+import About from './components/About';
 
 import Header from './components/Header';
 import Home from './components/Home';
@@ -17,6 +18,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/movies' element={<Movies />} />
           <Route path='/tvshows' element={<TvShows />} />
+          <Route path='/about' element={<About />} />
           <Route path='/*' element={<NotFound />} />
         </Routes>
       </Router>
