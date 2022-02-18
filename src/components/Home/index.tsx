@@ -3,6 +3,9 @@ import React from 'react';
 import { IMAGE_BASE_URL } from '../../constants/TmdbApiConstants';
 
 import usePopularMovieFetch from '../../hooks/usePopularMovieFetch';
+
+// Components
+import PopularTvs from '../PopularTvs';
 import Thumbnail from '../Thumbnail';
 
 const Home: React.FC = () => {
@@ -37,11 +40,7 @@ const Home: React.FC = () => {
           }
         </div>
       </div>
-      <div className='mt-5'>
-        <div>
-          <h1 className='text-4xl sm:text-5xl text-left font-bold'>Popular TV Shows</h1>
-        </div>
-      </div>
+      <PopularTvs />
     </div>
   );
 }
