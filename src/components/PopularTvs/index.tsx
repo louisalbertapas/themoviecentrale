@@ -2,12 +2,11 @@ import React from 'react';
 
 // Constants
 import { IMAGE_BASE_URL } from '../../constants/TmdbApiConstants';
-
 // Hooks
 import usePopularTvFetch from '../../hooks/usePopularTvFetch';
-
 // Components
 import Thumbnail from '../Thumbnail';
+import ErrorPage from '../ErrorPage';
 
 const PopularTvs: React.FC = () => {
   const { state, loading, error } = usePopularTvFetch();
@@ -15,14 +14,8 @@ const PopularTvs: React.FC = () => {
 
   if (error) {
     return (
-      <div className='mt-5 sm:mt-10'>
-        <div className='py-10 sm:py-20 px-2 sm:px-8 md:px-16 xl:px-40 font-mono'>
-          <div className='px-2 sm:px-8 md:px-16 xl:px-40'>
-            <h1 className='text-4xl sm:text-5xl text-left font-bold'>Something went wrong...</h1>
-          </div>
-        </div>
-      </div>
-    );
+      <ErrorPage />
+    )
   }
 
   return (
