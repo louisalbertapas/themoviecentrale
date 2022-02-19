@@ -10,21 +10,9 @@ const Header: React.FC = () => {
     <div className="bg-gradient-to-b from-slate-900 to-slate-900 top-0 fixed w-screen z-10">
       <div className="container md:flex md:items-center">
         <div className="flex justify-between items-center">
-          <a
-            target="_blank"
-            rel="noreferrer"
-            href="https://www.themoviedb.org/"
-            className="p-1 pl-2 sm:pl-16 md:pl-32 lg:pl-80"
-            >
-            <img
-              className="h-16 max-w-full w-auto"
-              src={TMDBLogo}
-              alt='tmdb-logo' />
-          </a>
-          <h1
-            className="px-1 md:px-2 text-lg md:text-2xl text-white font-mono">
-              The Movie Centrale
-          </h1>
+          <Link to="/" className="p-1 pl-2 sm:pl-16 md:pl-32 lg:pl-80 text-lg md:text-2xl text-white font-mono">
+            <p className='shadow border-2 border-slate-400 p-2 px-4 hover:border-slate-600 hover:text-gray-300 transition duration-300'>the Movie<br />Centrale</p>
+          </Link>
           <button className="px-3 rounded opacity-50 hover:opacity-75 md:hidden" id="navbar-toggle"
             onClick={() => {
               let collapse = document.querySelector('#navbar-collapse');
@@ -35,10 +23,6 @@ const Header: React.FC = () => {
           </button>
         </div>
         <div className="hidden md:flex flex-col md:flex-row md:ml-auto mt-3 md:mt-0" id="navbar-collapse">
-          <Link to='/'
-            className="p-1 px-2 lg:px-4 md:mx-2 text-white rounded hover:underline hover:text-gray-300 transition-colors duration-300" >
-            Home
-          </Link>
           <Link to='/movies'
             className="p-1 px-2 lg:px-4 md:mx-2 text-white rounded hover:underline hover:text-gray-300 transition-colors duration-300" >
             Movies
