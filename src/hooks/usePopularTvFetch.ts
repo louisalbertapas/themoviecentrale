@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 
 import API, { Tv } from '../api/TmdbApi';
+// Helpers
+import { isStatePersisted } from '../helpers/SessionState';
 
 const initialState = {
   results: [] as Tv[],
@@ -32,8 +34,19 @@ const usePopularTvFetch = () => {
 
   // Initial load
   useEffect(() => {
+    const sessionState = isStatePersisted("popularTvShowsState");
+    if (sessionState) {
+      setState(sessionState);
+      return;
+    }
+
     fetchPopularTvs();
   }, [])
+
+  useEffect(() => {
+    sessionStorage.setItem("popularTvShowsState", JSON.stringify(state));
+  }, [state])
+
 
   return { state, loading, error };
 }
