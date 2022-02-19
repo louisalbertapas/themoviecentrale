@@ -39,7 +39,7 @@ const useMoviesHomeFetch = () => {
 
   // Initial load
   useEffect(() => {
-    fetchMovies(1);
+    fetchMovies(1, searchText);
   }, [searchText])
 
   return { state, loading, error, setSearchText };

@@ -1,12 +1,18 @@
 import React from 'react';
+import useMoviesHomeFetch from '../../hooks/useMoviesHomeFetch';
+import ErrorPage from '../ErrorPage';
+import SearchBar from '../SearchBar';
 
 const Movies: React.FC = () => {
+  const { state, loading, error, setSearchText } = useMoviesHomeFetch();
+
+  if (error) return (<ErrorPage />);
+
   return (
-    <div className='mt-5 sm:mt-10'>
-      <div className='py-10 sm:py-20 px-2 sm:px-8 md:px-16 xl:px-40 font-mono'>
-        <div className='px-2 sm:px-8 md:px-16 xl:px-40'>
-          <h1 className='text-4xl sm:text-5xl text-left font-bold'>Movies</h1>
-        </div>
+    <div className='mt-10 py-10 sm:py-20 px-5 sm:px-20 md:px-40 font-mono bg-slate-300 h-screen'>
+      <h1 className='text-4xl sm:text-5xl text-left font-bold'>Movies</h1>
+      <div className='text-left mt-5'>
+        <SearchBar setSearchText={setSearchText} />
       </div>
     </div>
   );
