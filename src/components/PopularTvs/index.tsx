@@ -23,13 +23,21 @@ const PopularTvs: React.FC = () => {
       <div>
         <h1 className='text-2xl sm:text-3xl text-left font-bold text-slate-800 underline'>Popular TV Shows</h1>
       </div>
-      <div className='flex overflow-x-scroll scrollbar'>
-        {state.results.map(tv => (
-          <Thumbnail
-            key={tv.id}
-            source={`${IMAGE_BASE_URL}${tv.poster_path}`} />
-        ))}
-      </div>
+      <>
+        {
+          !loading
+            ? <div className='flex overflow-x-scroll scrollbar'>
+              {state.results.map(tv => (
+                <Thumbnail
+                  key={tv.id}
+                  source={`${IMAGE_BASE_URL}${tv.poster_path}`} />
+              ))}
+            </div>
+            : <div>
+              Loading...
+            </div>
+        }
+      </>
     </div>
   );
 }
