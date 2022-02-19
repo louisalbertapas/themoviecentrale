@@ -19,7 +19,7 @@ const PopularTvs: React.FC = () => {
   }
 
   return (
-    <div className='my-2 p-1'>
+    <div className='my-3 p-1'>
       <div>
         <h1 className='text-2xl sm:text-3xl text-left font-bold text-slate-800 underline'>Popular TV Shows</h1>
       </div>
@@ -30,7 +30,8 @@ const PopularTvs: React.FC = () => {
               {state.results.map(tv => (
                 <Thumbnail
                   key={tv.id}
-                  source={`${IMAGE_BASE_URL}${tv.poster_path}`} />
+                  source={`${IMAGE_BASE_URL}${tv.poster_path}`}
+                  title={tv.name} />
               ))}
             </div>
             : <div>

@@ -21,9 +21,9 @@ export type Movies = {
 
 export type Tv = {
   id: number;
-  original_title: string;
+  original_name: string;
   poster_path: string;
-  title: string;
+  name: string;
 };
 
 export type Tvs = {

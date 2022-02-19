@@ -2,11 +2,17 @@ import React from 'react';
 
 type Props = {
   source: string;
+  title: string;
 };
 
-const Thumbnail : React.FC<Props> = ({ source }) => {
+const Thumbnail : React.FC<Props> = ({ source, title }) => {
   return (
-    <img className='h-80 md:h-100 mx-8 my-5 shadow border-4 hover:scale-105 hover:border-slate-400 transition duration-300' src={source} />
+    <div className="p-2 min-w-max">
+      <img className='h-100 w-64 shadow border-4 hover:scale-105 hover:border-slate-400 transition duration-300' src={source} alt={`image-${source}`} />
+      <p className='pt-5'>
+        {title}
+      </p>
+    </div>
   );
 }
 

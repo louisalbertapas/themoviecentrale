@@ -28,11 +28,12 @@ const PopularMovies: React.FC = () => {
       <>
         {
           !loading
-            ? <div className='flex overflow-x-scroll scrollbar'>
+            ? <div className='flex flex-row overflow-x-scroll scrollbar'>
               {state.results.map(movie => (
                 <Thumbnail
                   key={movie.id}
-                  source={`${IMAGE_BASE_URL}${movie.poster_path}`} />
+                  source={`${IMAGE_BASE_URL}${movie.poster_path}`}
+                  title={movie.title} />
               ))
               }
             </div>
