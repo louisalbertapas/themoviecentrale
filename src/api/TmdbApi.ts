@@ -3,6 +3,7 @@ import {
   API_KEY,
   POPULAR_MOVIES_URL,
   POPULAR_TVS_URL,
+  SEARCH_MOVIES_URL,
 } from '../constants/TmdbApiConstants';
 
 export type Movie = {
@@ -41,7 +42,15 @@ const API = {
   fetchPopularTvs: async () : Promise<Tvs> => {
     const endpoint: string = `${POPULAR_TVS_URL}`;
     return await (await fetch(endpoint)).json();
-  }
+  },
+  searchMovies: async (page: number, searchText: string, includeAdult: boolean) : Promise<Movies> => {
+    const endpoint: string = `${SEARCH_MOVIES_URL}&query=${searchText}&page${page}&include_adult=${includeAdult}`;
+    if (searchText === '') {
+      return await API.fetchPopularMovies();
+    } else {
+      return await (await fetch(endpoint)).json();
+    }
+  },
 }
 
 export default API;
