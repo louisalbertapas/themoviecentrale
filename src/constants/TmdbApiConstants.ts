@@ -5,7 +5,8 @@ const POPULAR_MOVIES_URL: string = `${API_URL}movie/popular?api_key=${API_KEY}&l
 const POPULAR_TVS_URL: string = `${API_URL}tv/popular?api_key=${API_KEY}&language=en-US`
 const SEARCH_MOVIES_URL: string = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US`;
 
-const IMAGE_BASE_URL: string = 'http://image.tmdb.org/t/p/w780';
+const IMAGE_BASE_URL: string = 'https://image.tmdb.org/t/p/w780';
+const BACKDPROP_BASE_URL: string = 'https://image.tmdb.org/t/p/original'
 
 export {
   API_URL,
@@ -13,5 +14,6 @@ export {
   POPULAR_MOVIES_URL,
   POPULAR_TVS_URL,
   IMAGE_BASE_URL,
+  BACKDPROP_BASE_URL,
   SEARCH_MOVIES_URL,
 };

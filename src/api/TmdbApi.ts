@@ -11,6 +11,7 @@ export type Movie = {
   original_title: string;
   poster_path: string;
   title: string;
+  backdrop_path: string;
 };
 
 export type Movies = {
