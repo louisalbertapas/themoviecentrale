@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import API, { Tv } from '../api/TmdbApi';
+import { isStatePersisted } from '../helpers/SessionState';
 
 const initialState = {
   page: 0,
@@ -38,8 +39,23 @@ const useTvShowsHomeFetch = () => {
 
   // Initial load
   useEffect(() => {
+    if (!searchText) {
+      const sessionState = isStatePersisted('tvShowsHomeState');
+      if (sessionState) {
+        setState(sessionState);
+        return;
+      }
+    }
+
     fetchTvShows(1, searchText);
   }, [searchText])
+
+  // Save state to session storage
+  useEffect(() => {
+    if (!searchText) {
+      sessionStorage.setItem('tvShowsHomeState', JSON.stringify(state));
+    }
+  }, [searchText, state])
 
   return { state, loading, error, setSearchText };
 }

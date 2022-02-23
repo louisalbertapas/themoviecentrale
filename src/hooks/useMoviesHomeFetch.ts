@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import API, { Movie } from '../api/TmdbApi';
+import { isStatePersisted } from '../helpers/SessionState';
 
 const initialState = {
   page: 0,
@@ -10,10 +11,10 @@ const initialState = {
 };
 
 const useMoviesHomeFetch = () => {
-  const [ state, setState ] = useState(initialState);
-  const [ loading, setLoading ] = useState(false);
-  const [ error, setError ] = useState(false);
-  const [ searchText, setSearchText ] = useState("");
+  const [state, setState] = useState(initialState);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [searchText, setSearchText] = useState("");
 
   const fetchMovies = async (page: number, searchTerm = "", includeAdult = false) => {
     try {
@@ -39,8 +40,23 @@ const useMoviesHomeFetch = () => {
 
   // Initial load
   useEffect(() => {
+    if (!searchText) {
+      const sessionState = isStatePersisted('moviesHomeState');
+      if (sessionState) {
+        setState(sessionState)
+        return;
+      }
+    }
+
     fetchMovies(1, searchText);
   }, [searchText])
+
+  // Save state to session storage
+  useEffect(() => {
+    if (!searchText) {
+      sessionStorage.setItem('moviesHomeState', JSON.stringify(state));
+    }
+  }, [searchText, state]);
 
   return { state, loading, error, setSearchText };
 }
