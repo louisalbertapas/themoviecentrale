@@ -38,8 +38,8 @@ export type Tvs = {
 };
 
 const API = {
-  fetchPopularMovies: async () : Promise<Movies> => {
-    const endpoint: string = `${POPULAR_MOVIES_URL}`;
+  fetchPopularMovies: async (page = 1) : Promise<Movies> => {
+    const endpoint: string = `${POPULAR_MOVIES_URL}&page=${page}`;
     return await (await fetch(endpoint)).json();
   },
   fetchPopularTvs: async () : Promise<Tvs> => {
@@ -48,7 +48,7 @@ const API = {
   },
   searchMovies: async (page: number, searchText: string, includeAdult: boolean) : Promise<Movies> => {
     if (searchText === '') {
-      return await API.fetchPopularMovies();
+      return await API.fetchPopularMovies(page);
     } else {
       const endpoint: string = `${SEARCH_MOVIES_URL}&query=${searchText}&page=${page}&include_adult=${includeAdult}`;
       return await (await fetch(endpoint)).json();

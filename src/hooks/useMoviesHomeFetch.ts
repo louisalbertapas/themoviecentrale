@@ -15,6 +15,7 @@ const useMoviesHomeFetch = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [searchText, setSearchText] = useState("");
+  const [pageNumber, setPageNumber] = useState(1);
 
   const fetchMovies = async (page: number, searchTerm = "", includeAdult = false) => {
     try {
@@ -40,7 +41,7 @@ const useMoviesHomeFetch = () => {
 
   // Initial load
   useEffect(() => {
-    if (!searchText) {
+    if (!searchText && pageNumber === 1) {
       const sessionState = isStatePersisted('moviesHomeState');
       if (sessionState) {
         setState(sessionState)
@@ -48,8 +49,8 @@ const useMoviesHomeFetch = () => {
       }
     }
 
-    fetchMovies(1, searchText);
-  }, [searchText])
+    fetchMovies(pageNumber, searchText);
+  }, [pageNumber, searchText])
 
   // Save state to session storage
   useEffect(() => {
@@ -58,7 +59,7 @@ const useMoviesHomeFetch = () => {
     }
   }, [searchText, state]);
 
-  return { state, loading, error, setSearchText };
+  return { state, loading, error, setSearchText, setPageNumber };
 }
 
 export default useMoviesHomeFetch;
