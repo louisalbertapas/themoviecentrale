@@ -42,8 +42,8 @@ const API = {
     const endpoint: string = `${POPULAR_MOVIES_URL}&page=${page}`;
     return await (await fetch(endpoint)).json();
   },
-  fetchPopularTvs: async () : Promise<Tvs> => {
-    const endpoint: string = `${POPULAR_TVS_URL}`;
+  fetchPopularTvs: async (page = 1) : Promise<Tvs> => {
+    const endpoint: string = `${POPULAR_TVS_URL}&page=${page}`;
     return await (await fetch(endpoint)).json();
   },
   searchMovies: async (page: number, searchText: string, includeAdult: boolean) : Promise<Movies> => {
@@ -56,7 +56,7 @@ const API = {
   },
   searchTvShows: async (page: number, searchText: string, includeAdult: boolean) : Promise<Tvs> => {
     if (searchText === '') {
-      return await API.fetchPopularTvs();
+      return await API.fetchPopularTvs(page);
     } else {
       const endpoint: string = `${SEARCH_TV_SHOWS_URL}&query=${searchText}&page=${page}&include_adult=${includeAdult}`;
       return await (await fetch(endpoint)).json();

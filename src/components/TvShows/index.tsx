@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import ReactPaginate from 'react-paginate';
 import { BACKDPROP_BASE_URL, IMAGE_BASE_URL } from '../../constants/TmdbApiConstants';
 import useTvShowsHomeFetch from '../../hooks/useTvShowsHomeFetch';
 import ErrorPage from '../ErrorPage';
@@ -6,7 +7,20 @@ import SearchBar from '../SearchBar';
 import Thumbnail from '../Thumbnail';
 
 const TvShows: React.FC = () => {
-  const { state, loading, error, setSearchText } = useTvShowsHomeFetch();
+  const { state, loading, error, setSearchText, setPageNumber } = useTvShowsHomeFetch();
+  const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    // Fetch items from another resources.
+    setPageNumber(page);
+    console.log(`page: ${page}`);
+  }, [page]);
+
+  const handlePageClick = (event: any) => {
+    const page = event.selected + 1;
+    console.log(page); // 0-based
+    setPage(page);
+  };
 
   if (error) return (<ErrorPage />);
 
@@ -36,6 +50,19 @@ const TvShows: React.FC = () => {
             ))
           }
         </div>
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel=">"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={3}
+          pageCount={100}
+          previousLabel="<"
+          containerClassName="flex flex-wrap justify-center pb-10"
+          pageClassName="h-auto px-5 text-indigo-600 transition-colors duration-150 focus:shadow-outline"
+          nextClassName="h-auto px-5 text-indigo-600 transition-colors duration-150 focus:shadow-outline"
+          previousClassName='h-auto px-5 text-indigo-600 transition-colors duration-150 focus:shadow-outline'
+          breakClassName='h-auto px-5 text-indigo-600 transition-colors duration-150 focus:shadow-outline'
+          activeClassName='h-auto px-5 text-white border border-indigo-600 focus:shadow-outline' />
       </div>
     </div>
   );

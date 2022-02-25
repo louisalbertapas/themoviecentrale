@@ -11,10 +11,11 @@ const initialState = {
 }
 
 const useTvShowsHomeFetch = () => {
-  const [ state, setState ] = useState(initialState);
-  const [ loading, setLoading ] = useState(false);
-  const [ error, setError ] = useState(false);
-  const [ searchText, setSearchText ] = useState("");
+  const [state, setState] = useState(initialState);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [searchText, setSearchText] = useState("");
+  const [pageNumber, setPageNumber] = useState(1);
 
   const fetchTvShows = async (page: number, searchText = "", includeAdult = false) => {
     try {
@@ -23,11 +24,15 @@ const useTvShowsHomeFetch = () => {
 
       const tvshows = await API.searchTvShows(page, searchText, includeAdult);
 
-      setState(prev => ({
+      // setState(prev => ({
+      //   ...tvshows,
+      //   results: page > 1
+      //   ? [...prev.results, ...tvshows.results]
+      //   : [...tvshows.results]
+      // }));
+      setState(() => ({
         ...tvshows,
-        results: page > 1
-        ? [...prev.results, ...tvshows.results]
-        : [...tvshows.results]
+        results: [...tvshows.results]
       }));
 
     } catch (error) {
@@ -39,25 +44,21 @@ const useTvShowsHomeFetch = () => {
 
   // Initial load
   useEffect(() => {
-    if (!searchText) {
-      const sessionState = isStatePersisted('tvShowsHomeState');
-      if (sessionState) {
-        setState(sessionState);
-        return;
-      }
+    const sessionState = isStatePersisted(`tvShowsHomeState-${searchText}-${pageNumber}`);
+    if (sessionState) {
+      setState(sessionState);
+      return;
     }
 
-    fetchTvShows(1, searchText);
-  }, [searchText])
+    fetchTvShows(pageNumber, searchText);
+  }, [pageNumber, searchText])
 
   // Save state to session storage
   useEffect(() => {
-    if (!searchText) {
-      sessionStorage.setItem('tvShowsHomeState', JSON.stringify(state));
-    }
+    sessionStorage.setItem(`tvShowsHomeState-${searchText}-${pageNumber}`, JSON.stringify(state));
   }, [searchText, state])
 
-  return { state, loading, error, setSearchText };
+  return { state, loading, error, setSearchText, setPageNumber };
 }
 
 export default useTvShowsHomeFetch;
