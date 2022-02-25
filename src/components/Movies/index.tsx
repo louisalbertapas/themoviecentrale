@@ -12,24 +12,18 @@ const initialState = [] as Movie[];
 const Movies: React.FC = () => {
   const { state, loading, error, setSearchText, setPageNumber } = useMoviesHomeFetch();
   const [pageCount, setPageCount] = useState(0);
-  const [itemOffset, setItemOffset] = useState(0);
-
-  useEffect(() => {
-    setPageCount(state.total_pages);
-  }, [state]);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     // Fetch items from another resources.
-    const endOffset = itemOffset + 20;
-    setPageNumber(endOffset / 20 );
-    console.log(`page: ${endOffset / 20}`);
-  }, [itemOffset]);
+    setPageNumber(page);
+    console.log(`page: ${page}`);
+  }, [page]);
 
   const handlePageClick = (event: any) => {
-    const newOffset = (event.selected * 20);
-    console.log(`page number ${event.selected}`);
-    console.log(`offset ${newOffset}`);
-    setItemOffset(newOffset);
+    const page = event.selected + 1;
+    console.log(page); // 0-based
+    setPage(page);
   };
 
   if (error) return (<ErrorPage />);
@@ -51,7 +45,7 @@ const Movies: React.FC = () => {
         </div>
         <div className='mt-5 flex flex-row flex-wrap justify-center'>
           {
-            state.results.slice(itemOffset, itemOffset + 20).map(movie => (
+            state.results.map(movie => (
               <Thumbnail
                 key={movie.id}
                 source={`${IMAGE_BASE_URL}${movie.poster_path}`}
@@ -62,11 +56,17 @@ const Movies: React.FC = () => {
         </div>
         <ReactPaginate
           breakLabel="..."
-          nextLabel="next >"
+          nextLabel=">"
           onPageChange={handlePageClick}
-          pageRangeDisplayed={5}
-          pageCount={pageCount}
-          previousLabel="< previous" />
+          pageRangeDisplayed={3}
+          pageCount={100}
+          previousLabel="<"
+          containerClassName="flex flex-wrap justify-center pb-10"
+          pageClassName="h-auto px-5 text-indigo-600 transition-colors duration-150 focus:shadow-outline"
+          nextClassName="h-auto px-5 text-indigo-600 transition-colors duration-150 focus:shadow-outline" 
+          previousClassName='h-auto px-5 text-indigo-600 transition-colors duration-150 focus:shadow-outline'
+          breakClassName='h-auto px-5 text-indigo-600 transition-colors duration-150 focus:shadow-outline'
+          activeClassName='h-auto px-5 text-white border border-indigo-600 focus:shadow-outline' />
       </div>
     </div>
   );

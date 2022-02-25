@@ -25,11 +25,9 @@ const useMoviesHomeFetch = () => {
       const movies = await API.searchMovies(page, searchTerm, includeAdult);
       console.log(movies);
 
-      setState(prev => ({
+      setState(() => ({
         ...movies,
-        results: page > 1
-          ? [...prev.results, ...movies.results]
-          : [...movies.results]
+        results: [...movies.results]
       }));
 
     } catch (error) {
@@ -41,12 +39,10 @@ const useMoviesHomeFetch = () => {
 
   // Initial load
   useEffect(() => {
-    if (!searchText && pageNumber === 1) {
-      const sessionState = isStatePersisted('moviesHomeState');
-      if (sessionState) {
-        setState(sessionState)
-        return;
-      }
+    const sessionState = isStatePersisted(`moviesHomeState-${searchText}-${pageNumber}`);
+    if (sessionState) {
+      setState(sessionState)
+      return;
     }
 
     fetchMovies(pageNumber, searchText);
@@ -54,9 +50,7 @@ const useMoviesHomeFetch = () => {
 
   // Save state to session storage
   useEffect(() => {
-    if (!searchText) {
-      sessionStorage.setItem('moviesHomeState', JSON.stringify(state));
-    }
+      sessionStorage.setItem(`moviesHomeState-${searchText}-${state.page}`, JSON.stringify(state));
   }, [searchText, state]);
 
   return { state, loading, error, setSearchText, setPageNumber };
