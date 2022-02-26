@@ -11,8 +11,12 @@ const initialState = [] as Movie[];
 
 const Movies: React.FC = () => {
   const { state, loading, error, setSearchText, setPageNumber } = useMoviesHomeFetch();
-  const [pageCount, setPageCount] = useState(0);
   const [page, setPage] = useState(1);
+  const [pageCount, setPageCount] = useState(1);
+
+  useEffect(() => {
+    setPageCount(state.total_pages >= 100 ? 100 : state.total_pages);
+  }, [state])
 
   useEffect(() => {
     // Fetch items from another resources.
@@ -59,7 +63,7 @@ const Movies: React.FC = () => {
           nextLabel=">"
           onPageChange={handlePageClick}
           pageRangeDisplayed={3}
-          pageCount={100}
+          pageCount={pageCount}
           previousLabel="<"
           containerClassName="flex flex-wrap justify-center pb-10"
           pageClassName="h-auto px-5 text-indigo-600 transition-colors duration-150 focus:shadow-outline"
