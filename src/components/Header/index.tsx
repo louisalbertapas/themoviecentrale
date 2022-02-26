@@ -12,7 +12,7 @@ const Header: React.FC = () => {
       <div className="container md:flex md:items-center">
         <div className="flex justify-between items-center">
           <Link to="/" className="p-1 pl-2 text-lg md:text-2xl text-white font-mono">
-            <p className='shadow border-2 border-slate-400 p-2 px-4 hover:border-slate-600 hover:text-gray-300 transition duration-300'>the Movie<br />Centrale</p>
+            <p className='shadow border-2 border-slate-400 p-2 px-4 hover:border-slate-600 hover:text-gray-300 transition duration-300'>the MOVIE<br />centrale</p>
           </Link>
           <button className="px-3 rounded opacity-50 hover:opacity-75 md:hidden" id="navbar-toggle"
             onClick={() => {
