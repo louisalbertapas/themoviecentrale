@@ -6,6 +6,8 @@ import ErrorPage from '../ErrorPage';
 import SearchBar from '../SearchBar';
 import Thumbnail from '../Thumbnail';
 
+import NoImage from '../../images/no-image-available.jpg';
+
 const TvShows: React.FC = () => {
   const { state, loading, error, setSearchText, setPageNumber } = useTvShowsHomeFetch();
   const [page, setPage] = useState(1);
@@ -49,7 +51,7 @@ const TvShows: React.FC = () => {
             state.results.map(tv => (
               <Thumbnail
                 key={tv.id}
-                source={`${IMAGE_BASE_URL}${tv.poster_path}`}
+                source={tv.poster_path ? `${IMAGE_BASE_URL}${tv.poster_path}` : NoImage}
                 title={tv.name}
               />
             ))

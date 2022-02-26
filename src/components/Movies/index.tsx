@@ -6,6 +6,7 @@ import useMoviesHomeFetch from '../../hooks/useMoviesHomeFetch';
 import ErrorPage from '../ErrorPage';
 import SearchBar from '../SearchBar';
 import Thumbnail from '../Thumbnail';
+import NoImage from '../../images/no-image-available.jpg';
 
 const initialState = [] as Movie[];
 
@@ -52,7 +53,7 @@ const Movies: React.FC = () => {
             state.results.map(movie => (
               <Thumbnail
                 key={movie.id}
-                source={`${IMAGE_BASE_URL}${movie.poster_path}`}
+                source={movie.poster_path ? `${IMAGE_BASE_URL}${movie.poster_path}` : NoImage}
                 title={movie.title}
               />
             ))
