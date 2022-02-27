@@ -33,7 +33,8 @@ const PopularMovies: React.FC = () => {
                 <Thumbnail
                   key={movie.id}
                   source={`${IMAGE_BASE_URL}${movie.poster_path}`}
-                  title={movie.title} />
+                  title={movie.title}
+                  movieId={movie.id} />
               ))
               }
             </div>
