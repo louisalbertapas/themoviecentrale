@@ -31,7 +31,8 @@ const PopularTvs: React.FC = () => {
                 <Thumbnail
                   key={tv.id}
                   source={`${IMAGE_BASE_URL}${tv.poster_path}`}
-                  title={tv.name} />
+                  title={tv.name}
+                  thumbType={`tvshows`} />
               ))}
             </div>
             : <div>

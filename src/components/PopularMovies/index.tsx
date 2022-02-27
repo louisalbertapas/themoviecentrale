@@ -34,6 +34,7 @@ const PopularMovies: React.FC = () => {
                   key={movie.id}
                   source={`${IMAGE_BASE_URL}${movie.poster_path}`}
                   title={movie.title}
+                  thumbType={`movies`}
                   movieId={movie.id} />
               ))
               }
