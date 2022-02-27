@@ -56,7 +56,7 @@ const Movies: React.FC = () => {
                 source={movie.poster_path ? `${IMAGE_BASE_URL}${movie.poster_path}` : NoImage}
                 title={movie.title}
                 thumbType={`movies`}
-                movieId={movie.id}
+                id={movie.id}
               />
             ))
           }
