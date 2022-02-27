@@ -53,6 +53,7 @@ const TvShows: React.FC = () => {
                 key={tv.id}
                 source={tv.poster_path ? `${IMAGE_BASE_URL}${tv.poster_path}` : NoImage}
                 title={tv.name}
+                thumbType={`tvshows`}
               />
             ))
           }
