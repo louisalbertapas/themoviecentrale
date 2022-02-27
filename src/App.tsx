@@ -8,6 +8,7 @@ import Home from './components/Home';
 import MovieDetails from './components/MovieDetails';
 import Movies from './components/Movies';
 import NotFound from './components/NotFound';
+import TvShowDetails from './components/TvShowDetails';
 import TvShows from './components/TvShows';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path='/movies' element={<Movies />} />
           <Route path='/movies/:movieId' element={<MovieDetails />} />
           <Route path='/tvshows' element={<TvShows />} />
+          <Route path='tvshows/:tvShowId' element={<TvShowDetails />} />
           <Route path='/about' element={<About />} />
           <Route path='/*' element={<NotFound />} />
         </Routes>
