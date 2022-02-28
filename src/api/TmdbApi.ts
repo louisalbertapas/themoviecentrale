@@ -61,7 +61,11 @@ const API = {
       const endpoint: string = `${SEARCH_TV_SHOWS_URL}&query=${searchText}&page=${page}&include_adult=${includeAdult}`;
       return await (await fetch(endpoint)).json();
     }
-  }
+  },
+  getMovieDetails: async (movieId: number) : Promise<Movie> => {
+    const endpoint: string = `${API_URL}movie/${movieId}?api_key=${API_KEY}&language=en-US`;
+    return await (await fetch(endpoint)).json();
+  },
 }
 
 export default API;
