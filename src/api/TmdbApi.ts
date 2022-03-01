@@ -66,6 +66,10 @@ const API = {
     const endpoint: string = `${API_URL}movie/${movieId}?api_key=${API_KEY}&language=en-US`;
     return await (await fetch(endpoint)).json();
   },
+  getTvShowDetails: async (tvId: number) : Promise<Tv> => {
+    const endpoint: string = `${API_URL}tv/${tvId}?api_key=${API_KEY}&language=en-US`;
+    return await (await fetch(endpoint)).json();
+  }
 }
 
 export default API;
