@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import API, { Movie } from '../api/TmdbApi';
 
-const useMoviesHomeFetch = async (movieId: number) => {
+const useMovieDetailFetch = (movieId: number) => {
   const [state, setState] = useState<Movie>({} as Movie);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -33,4 +33,4 @@ const useMoviesHomeFetch = async (movieId: number) => {
 
 }
 
-export default useMoviesHomeFetch;
+export default useMovieDetailFetch;
