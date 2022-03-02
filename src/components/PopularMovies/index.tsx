@@ -36,6 +36,7 @@ const PopularMovies: React.FC = () => {
                   title={movie.title}
                   thumbType={`movies`}
                   clickable={true}
+                  showDetails={true}
                   id={movie.id} />
               ))
               }

@@ -34,6 +34,7 @@ const PopularTvs: React.FC = () => {
                   title={tv.name}
                   thumbType={`tvshows`}
                   clickable={true}
+                  showDetails={true}
                   id={tv.id} />
               ))}
             </div>

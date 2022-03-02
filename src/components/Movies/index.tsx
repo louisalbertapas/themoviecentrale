@@ -57,6 +57,7 @@ const Movies: React.FC = () => {
                 title={movie.title}
                 thumbType={`movies`}
                 clickable={true}
+                showDetails={true}
                 id={movie.id}
               />
             ))
