@@ -15,7 +15,7 @@ const MovieDetails: React.FC = () => {
   if (error) return (<ErrorPage />);
 
   return (
-    <div className='pt-32 px-5 sm:px-20 md:px-40 font-mono bg-slate-300 h-screen'>
+    <div className='pt-32 px-5 sm:px-20 md:px-40 font-mono bg-slate-300 h-full'>
       <>
         {
           loading
@@ -23,7 +23,7 @@ const MovieDetails: React.FC = () => {
             : (
               <div>
                 <p className='text-xl sm:text-2xl'>{movie.title}</p>
-                <img className='sm:h-[600px] sm:w-full' src={`${BACKDPROP_BASE_URL}${movie.backdrop_path}`} />
+                <img className='m-1 sm:h-[600px] sm:w-full shadow border-4 border-slate-400' src={`${BACKDPROP_BASE_URL}${movie.backdrop_path}`} />
                 <div className='flex flex-wrap sm:flex-nowrap p-2 pt-5 sm:justify-center text-left'>
                   <div className='flex-col w-auto sm:w-1/2 px-2'>
                       <p><b>Original Title:</b> {movie.original_title}</p>
