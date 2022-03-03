@@ -1,6 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
-import { IMAGE_BASE_URL } from '../../constants/TmdbApiConstants';
+import { BACKDPROP_BASE_URL, IMAGE_BASE_URL } from '../../constants/TmdbApiConstants';
 import useMovieDetailFetch from '../../hooks/useMovieDetailFetch';
 import ErrorPage from '../ErrorPage';
 import Thumbnail from '../Thumbnail';
@@ -15,7 +15,7 @@ const MovieDetails: React.FC = () => {
   if (error) return (<ErrorPage />);
 
   return (
-    <div className='mt-32 text-black'>
+    <div className='pt-32 px-5 sm:px-20 md:px-40 font-mono bg-slate-300 h-screen'>
       <>
         {
           loading
@@ -23,30 +23,17 @@ const MovieDetails: React.FC = () => {
             : (
               <div>
                 <p className='text-xl sm:text-2xl'>{movie.title}</p>
-                <div className='flex flex-wrap sm:flex-nowrap justify-center'>
-                  <div className='flex w-auto m-2 p-2 justify-center'>
-                    <Thumbnail
-                      key={movie.id}
-                      source={movie.poster_path ? `${IMAGE_BASE_URL}${movie.poster_path}` : NoImage}
-                      title={movie.title}
-                      thumbType={`movies`}
-                      clickable={false}
-                      showDetails={false}
-                      id={movie.id}
-                    />
+                <img className='sm:h-[600px] sm:w-full' src={`${BACKDPROP_BASE_URL}${movie.backdrop_path}`} />
+                <div className='flex flex-wrap sm:flex-nowrap p-2 pt-5 sm:justify-center text-left'>
+                  <div className='flex-col w-auto sm:w-1/2 px-2'>
+                      <p><b>Original Title:</b> {movie.original_title}</p>
+                      <p><b>Tagline:</b> {movie.tagline}</p>
+                      <p><b>Overview:</b> {movie.overview}</p>
                   </div>
-                  <div className='flex w-auto m-2 p-2 pt-5 justify-center'>
-                    <div className='flex flex-col'>
-                      <div>
-                        Movie Details 1!
-                      </div>
-                      <div>
-                        Movie Details 2!
-                      </div>
-                      <div>
-                        Movie Details 3!
-                      </div>
-                    </div>
+                  <div className='w-auto sm:w-1/2 px-2 text-left'>
+                      <p><b>Status:</b> {movie.status}</p>
+                      <p><b>Release Date:</b> {movie.release_date}</p>
+                      <p><b>Runtime:</b> {movie.runtime} minutes</p>
                   </div>
                 </div>
               </div>
