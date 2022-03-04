@@ -33,6 +33,11 @@ export type Tv = {
   poster_path: string;
   name: string;
   backdrop_path: string;
+  overview: string;
+  first_air_date: string;
+  last_air_date: string;
+  tagline: string;
+  status:string;
 };
 
 export type Tvs = {
