@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import API, { Tv } from '../api/TmdbApi';
+import { isStatePersisted } from '../helpers/SessionState';
 
 const useTvShowDetailFetch = (tvId: number) => {
   const [ state, setState ] = useState<Tv>({} as Tv);
@@ -27,8 +28,18 @@ const useTvShowDetailFetch = (tvId: number) => {
   }
 
   useEffect(() => {
+    const sessionState = isStatePersisted(`tvshow${tvId}`);
+    if (sessionState) {
+      setState(sessionState);
+      return;
+    }
+
     getTvDetails();
   }, [tvId])
+
+  useEffect(() => {
+    sessionStorage.setItem(`tvshow${tvId}`, JSON.stringify(state));
+  }, [state])
 
   return { state, loading, error };
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import API, { Movie } from '../api/TmdbApi';
+import { isStatePersisted } from '../helpers/SessionState';
 
 const useMovieDetailFetch = (movieId: number) => {
   const [state, setState] = useState<Movie>({} as Movie);
@@ -26,8 +27,17 @@ const useMovieDetailFetch = (movieId: number) => {
   }
 
   useEffect(() => {
+    const sessionState = isStatePersisted(`movie${movieId}`);
+    if (sessionState) {
+      setState(sessionState);
+      return;
+    }
     getMovieDetails();
   }, [movieId])
+
+  useEffect(() => {
+    sessionStorage.setItem(`movie${movieId}`, JSON.stringify(state))
+  }, [state])
 
   return { state, loading, error }
 
