@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { BACKDPROP_BASE_URL } from '../../constants/TmdbApiConstants';
 import useTvShowDetailFetch from '../../hooks/useTvShowDetailFetch';
+import Breadcrumb from '../Breadcrumb';
 import ErrorPage from '../ErrorPage';
 
 const TvShowDetails: React.FC = () => {
@@ -14,6 +15,7 @@ const TvShowDetails: React.FC = () => {
   return (
     <div className='pt-32 px-5 sm:px-20 md:px-40 font-mono bg-slate-300 h-full'>
       <>
+        <Breadcrumb />
         {
           loading
             ? <div>Loading...</div>

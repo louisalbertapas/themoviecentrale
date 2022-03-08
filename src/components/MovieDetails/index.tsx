@@ -5,6 +5,7 @@ import useMovieDetailFetch from '../../hooks/useMovieDetailFetch';
 import ErrorPage from '../ErrorPage';
 import Thumbnail from '../Thumbnail';
 import NoImage from '../../images/no-image-available.jpg';
+import Breadcrumb from '../Breadcrumb';
 
 const MovieDetails: React.FC = () => {
   // get the movieId from the query params
@@ -17,6 +18,7 @@ const MovieDetails: React.FC = () => {
   return (
     <div className='pt-32 px-5 sm:px-20 md:px-40 font-mono bg-slate-300 h-full'>
       <>
+      <Breadcrumb />
         {
           loading
             ? <div>Loading...</div>
