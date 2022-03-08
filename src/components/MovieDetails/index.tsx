@@ -1,10 +1,8 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
-import { BACKDPROP_BASE_URL, IMAGE_BASE_URL } from '../../constants/TmdbApiConstants';
+import { BACKDPROP_BASE_URL } from '../../constants/TmdbApiConstants';
 import useMovieDetailFetch from '../../hooks/useMovieDetailFetch';
 import ErrorPage from '../ErrorPage';
-import Thumbnail from '../Thumbnail';
-import NoImage from '../../images/no-image-available.jpg';
 import Breadcrumb from '../Breadcrumb';
 
 const MovieDetails: React.FC = () => {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import API, { Movie } from '../api/TmdbApi';
 import { isStatePersisted } from '../helpers/SessionState';
 

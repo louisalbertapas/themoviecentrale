@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 // Images
 import MenuImg from '../../images/menu.svg';
-import TMDBLogo from '../../images/tmdb_logo.svg';
 
 const Header: React.FC = () => {
   return (

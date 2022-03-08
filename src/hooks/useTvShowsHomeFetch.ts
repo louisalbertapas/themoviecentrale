@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 import API, { Tv } from '../api/TmdbApi';
 import { isStatePersisted } from '../helpers/SessionState';
