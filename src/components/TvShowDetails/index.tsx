@@ -15,7 +15,17 @@ const TvShowDetails: React.FC = () => {
   return (
     <div className='pt-32 px-5 sm:px-20 md:px-40 font-mono bg-slate-300 h-full'>
       <>
-        <Breadcrumb />
+        <Breadcrumb
+          containerClass='text-left'
+          activeClass='text-indigo-600 font-bold'
+          inactiveClass='text-indigo-500'
+          breadcrumbClass='p-1'
+          separatorClass='text-indigo-500'
+          separator='>>'
+          type='tvshows'
+          label='TV Shows'
+          id={tvShowId ? tvShowId : ""}
+          title={tvShow.name} />
         {
           loading
             ? <div>Loading...</div>
