@@ -53,8 +53,9 @@ const MovieDetails: React.FC = () => {
                 </div>
                 <div className="flex flex-row">
                   {
-                    movie.production_companies.map(production_company => (
+                    movie.production_companies && movie.production_companies.map(production_company => (
                       <ProductionDetails
+                        key={production_company.name}
                         containerClass='p-20'
                         imageClass='pt-4'
                         name={production_company.name}
