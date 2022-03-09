@@ -49,12 +49,12 @@ const TvShowDetails: React.FC = () => {
                 <div className='text-xl sm:text-2xl text-left p-2 mt-8 text-indigo-600 font-bold'>
                   <p>PRODUCERS</p>
                 </div>
-                <div className="flex flex-row">
+                <div className="flex flex-row flex-wrap sm:flex-nowrap">
                   {
                     tvShow.production_companies && tvShow.production_companies.map(production_company => (
                       <ProductionDetails
                         key={production_company.name}
-                        containerClass='p-20'
+                        containerClass='p-4 sm:p-20'
                         imageClass='pt-4'
                         name={production_company.name}
                         logo_path={production_company.logo_path} />
