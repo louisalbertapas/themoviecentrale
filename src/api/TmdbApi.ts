@@ -18,6 +18,7 @@ export type Movie = {
   runtime: number;
   tagline: string;
   status: string;
+  production_companies: ProductionCompany[];
 };
 
 export type Movies = {
@@ -38,6 +39,7 @@ export type Tv = {
   last_air_date: string;
   tagline: string;
   status:string;
+  production_companies: ProductionCompany[];
 };
 
 export type Tvs = {
@@ -45,6 +47,13 @@ export type Tvs = {
   results: Tv[];
   total_pages: number;
   total_results: number;
+};
+
+export type ProductionCompany = {
+  id: number;
+  logo_path: string;
+  name: string;
+  origin_country: string;
 };
 
 const API = {

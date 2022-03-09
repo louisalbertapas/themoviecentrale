@@ -4,6 +4,7 @@ import { BACKDPROP_BASE_URL } from '../../constants/TmdbApiConstants';
 import useTvShowDetailFetch from '../../hooks/useTvShowDetailFetch';
 import Breadcrumb from '../Breadcrumb';
 import ErrorPage from '../ErrorPage';
+import ProductionDetails from '../ProductionDetails';
 
 const TvShowDetails: React.FC = () => {
   const { tvShowId } = useParams();
@@ -44,6 +45,20 @@ const TvShowDetails: React.FC = () => {
                       <p><b>First Air Date:</b> {tvShow.first_air_date}</p>
                       <p><b>Last Air Date:</b> {tvShow.last_air_date}</p>
                   </div>
+                </div>
+                <div className='text-xl sm:text-2xl text-left p-2 mt-8 text-indigo-600 font-bold'>
+                  <p>PRODUCERS</p>
+                </div>
+                <div className="flex flex-row">
+                  {
+                    tvShow.production_companies && tvShow.production_companies.map(production_company => (
+                      <ProductionDetails
+                        key={production_company.name}
+                        containerClass='p-20'
+                        name={production_company.name}
+                        logo_path={production_company.logo_path} />
+                    ))
+                  }
                 </div>
               </div>
             )

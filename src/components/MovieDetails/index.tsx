@@ -4,6 +4,7 @@ import { BACKDPROP_BASE_URL } from '../../constants/TmdbApiConstants';
 import useMovieDetailFetch from '../../hooks/useMovieDetailFetch';
 import ErrorPage from '../ErrorPage';
 import Breadcrumb from '../Breadcrumb';
+import ProductionDetails from '../ProductionDetails';
 
 const MovieDetails: React.FC = () => {
   // get the movieId from the query params
@@ -46,6 +47,19 @@ const MovieDetails: React.FC = () => {
                       <p><b>Release Date:</b> {movie.release_date}</p>
                       <p><b>Runtime:</b> {movie.runtime} minutes</p>
                   </div>
+                </div>
+                <div className='text-xl sm:text-2xl text-left p-2 mt-8 text-indigo-600 font-bold'>
+                  <p>PRODUCERS</p>
+                </div>
+                <div className="flex flex-row">
+                  {
+                    movie.production_companies.map(production_company => (
+                      <ProductionDetails
+                        containerClass='p-20'
+                        name={production_company.name}
+                        logo_path={production_company.logo_path}/>
+                    ))
+                  }
                 </div>
               </div>
             )
