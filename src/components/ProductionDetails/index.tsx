@@ -12,8 +12,8 @@ type Props = {
 const ProductionDetails: React.FC<Props> = ({containerClass, imageClass, name, logo_path}) => {
   return (
     <div className={containerClass}>
-      {name}
       <img className={imageClass} src={logo_path ? `${IMAGE_BASE_URL}${logo_path}` : NoImage} alt={name}/>
+      {!logo_path ? name : null}
     </div>
   )
 }

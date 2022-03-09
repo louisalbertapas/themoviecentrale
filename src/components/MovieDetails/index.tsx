@@ -57,7 +57,7 @@ const MovieDetails: React.FC = () => {
                       <ProductionDetails
                         key={production_company.name}
                         containerClass='p-4 sm:p-20'
-                        imageClass='pt-4'
+                        imageClass='pb-4'
                         name={production_company.name}
                         logo_path={production_company.logo_path}/>
                     ))
