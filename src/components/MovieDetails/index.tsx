@@ -56,6 +56,7 @@ const MovieDetails: React.FC = () => {
                     movie.production_companies.map(production_company => (
                       <ProductionDetails
                         containerClass='p-20'
+                        imageClass='pt-4'
                         name={production_company.name}
                         logo_path={production_company.logo_path}/>
                     ))
