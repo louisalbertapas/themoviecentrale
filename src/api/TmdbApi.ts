@@ -110,8 +110,16 @@ const API = {
     const endpoint: string = `${API_URL}movie/${movieId}?api_key=${API_KEY}&language=en-US`;
     return await (await fetch(endpoint)).json();
   },
+  getMovieCredits: async (movieId: number) : Promise<Credit> => {
+    const endpoint: string = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`;
+    return await (await fetch(endpoint)).json();
+  },
   getTvShowDetails: async (tvId: number) : Promise<Tv> => {
     const endpoint: string = `${API_URL}tv/${tvId}?api_key=${API_KEY}&language=en-US`;
+    return await (await fetch(endpoint)).json();
+  },
+  getTvCredits: async (tvId: number) : Promise<Credit> => {
+    const endpoint: string = `${API_URL}tv/${tvId}/credits?api_key=${API_KEY}&language=en-US`;
     return await (await fetch(endpoint)).json();
   }
 }
