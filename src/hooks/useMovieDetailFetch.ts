@@ -1,9 +1,14 @@
 import { useEffect, useState } from 'react'
-import API, { Movie } from '../api/TmdbApi';
+import API, { Cast, Crew, Movie } from '../api/TmdbApi';
 import { isStatePersisted } from '../helpers/SessionState';
 
+type MovieState = Movie & {
+  casts: Cast[];
+  directors: Crew[];
+}
+
 const useMovieDetailFetch = (movieId: number) => {
-  const [state, setState] = useState<Movie>({} as Movie);
+  const [state, setState] = useState<MovieState>({} as MovieState);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -14,9 +19,14 @@ const useMovieDetailFetch = (movieId: number) => {
       setLoading(true);
 
       const movieDetails = await API.getMovieDetails(movieId);
+      const movieCredits = await API.getMovieCredits(movieId);
+
+      const directors = movieCredits.crew.filter(member => member.job === 'Director');
 
       setState({
-        ...movieDetails
+        ...movieDetails,
+        casts: movieCredits.cast,
+        directors: directors
       });
 
     } catch (error) {

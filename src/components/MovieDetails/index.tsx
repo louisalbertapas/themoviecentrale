@@ -49,6 +49,26 @@ const MovieDetails: React.FC = () => {
                   </div>
                 </div>
                 <div className='text-xl sm:text-2xl text-left p-2 mt-8 text-indigo-600 font-bold'>
+                  <p>CASTS</p>
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                  {
+                    movie.casts && movie.casts.map(cast => (
+                      <span>{cast.name} as {cast.character}</span>
+                    ))
+                  }
+                </div>
+                <div className='text-xl sm:text-2xl text-left p-2 mt-8 text-indigo-600 font-bold'>
+                  <p>DIRECTORS</p>
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                  {
+                    movie.directors && movie.directors.map(director => (
+                      <span>{director.name}</span>
+                    ))
+                  }
+                </div>
+                <div className='text-xl sm:text-2xl text-left p-2 mt-8 text-indigo-600 font-bold'>
                   <p>PRODUCERS</p>
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -63,6 +83,7 @@ const MovieDetails: React.FC = () => {
                     ))
                   }
                 </div>
+                
               </div>
             )
         }
