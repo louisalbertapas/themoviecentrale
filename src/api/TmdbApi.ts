@@ -56,6 +56,31 @@ export type ProductionCompany = {
   origin_country: string;
 };
 
+export type Cast = {
+  id: number;
+  cast_id: number;
+  credit_id: string;
+  name: string;
+  profile_path: string;
+  character: string;
+  order: number;
+};
+
+export type Crew = {
+  id: number;
+  credit_id: string;
+  name: string;
+  profile_path: string;
+  department: string;
+  job: string;
+};
+
+export type Credit = {
+  id: number;
+  cast: Cast[];
+  crew: Crew[];
+};
+
 const API = {
   fetchPopularMovies: async (page = 1) : Promise<Movies> => {
     const endpoint: string = `${POPULAR_MOVIES_URL}&page=${page}`;
