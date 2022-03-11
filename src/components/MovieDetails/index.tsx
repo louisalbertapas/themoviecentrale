@@ -55,7 +55,12 @@ const MovieDetails: React.FC = () => {
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                   {
                     movie.casts && movie.casts.map(cast => (
-                      <CreditsDetails />
+                      <CreditsDetails
+                        key={cast.id}
+                        containerClass='p-4 sm:p-8'
+                        imageClass='pb-4'
+                        name={cast.name}
+                        profile_path={cast.profile_path} />
                     ))
                   }
                 </div>
@@ -65,7 +70,12 @@ const MovieDetails: React.FC = () => {
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                   {
                     movie.directors && movie.directors.map(director => (
-                      <CreditsDetails />
+                      <CreditsDetails
+                        key={director.id}
+                        containerClass='p-4 sm:p-8'
+                        imageClass='pb-4'
+                        name={director.name}
+                        profile_path={director.profile_path} />
                     ))
                   }
                 </div>
