@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { BACKDPROP_BASE_URL } from '../../constants/TmdbApiConstants';
 import useTvShowDetailFetch from '../../hooks/useTvShowDetailFetch';
 import Breadcrumb from '../Breadcrumb';
+import CreditsDetails from '../CreditsDetails';
 import ErrorPage from '../ErrorPage';
 import ProductionDetails from '../ProductionDetails';
 
@@ -52,7 +53,7 @@ const TvShowDetails: React.FC = () => {
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                   {
                     tvShow.casts && tvShow.casts.map(cast => (
-                      <span>{cast.name} as {cast.character}</span>
+                      <CreditsDetails />
                     ))
                   }
                 </div>
@@ -62,7 +63,7 @@ const TvShowDetails: React.FC = () => {
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                   {
                     tvShow.directors && tvShow.directors.map(director => (
-                      <span>{director.name}</span>
+                      <CreditsDetails />
                     ))
                   }
                 </div>

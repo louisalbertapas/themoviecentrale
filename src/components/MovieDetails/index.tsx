@@ -5,6 +5,7 @@ import useMovieDetailFetch from '../../hooks/useMovieDetailFetch';
 import ErrorPage from '../ErrorPage';
 import Breadcrumb from '../Breadcrumb';
 import ProductionDetails from '../ProductionDetails';
+import CreditsDetails from '../CreditsDetails';
 
 const MovieDetails: React.FC = () => {
   // get the movieId from the query params
@@ -54,7 +55,7 @@ const MovieDetails: React.FC = () => {
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                   {
                     movie.casts && movie.casts.map(cast => (
-                      <span>{cast.name} as {cast.character}</span>
+                      <CreditsDetails />
                     ))
                   }
                 </div>
@@ -64,7 +65,7 @@ const MovieDetails: React.FC = () => {
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                   {
                     movie.directors && movie.directors.map(director => (
-                      <span>{director.name}</span>
+                      <CreditsDetails />
                     ))
                   }
                 </div>
