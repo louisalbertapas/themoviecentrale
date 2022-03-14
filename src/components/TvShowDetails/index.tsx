@@ -50,7 +50,7 @@ const TvShowDetails: React.FC = () => {
                 <div className='text-xl sm:text-2xl text-left p-2 mt-8 text-indigo-600 font-bold'>
                   <p>CASTS</p>
                 </div>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-6 gap-2">
                   {
                     tvShow.casts && tvShow.casts.map(cast => (
                       <CreditsDetails
@@ -65,7 +65,7 @@ const TvShowDetails: React.FC = () => {
                 <div className='text-xl sm:text-2xl text-left p-2 mt-8 text-indigo-600 font-bold'>
                   <p>DIRECTORS</p>
                 </div>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-6 gap-2">
                   {
                     tvShow.directors && tvShow.directors.map(director => (
                       <CreditsDetails
