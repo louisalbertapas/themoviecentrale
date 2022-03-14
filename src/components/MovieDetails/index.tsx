@@ -52,12 +52,12 @@ const MovieDetails: React.FC = () => {
                 <div className='text-xl sm:text-2xl text-left p-2 mt-8 text-indigo-600 font-bold'>
                   <p>CASTS</p>
                 </div>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-6 gap-2">
                   {
                     movie.casts && movie.casts.map(cast => (
                       <CreditsDetails
                         key={cast.id}
-                        containerClass='p-4 sm:p-8'
+                        containerClass='p-2 sm:p-4'
                         imageClass='pb-4'
                         name={cast.name}
                         profile_path={cast.profile_path} />
@@ -67,7 +67,7 @@ const MovieDetails: React.FC = () => {
                 <div className='text-xl sm:text-2xl text-left p-2 mt-8 text-indigo-600 font-bold'>
                   <p>DIRECTORS</p>
                 </div>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-6 gap-2">
                   {
                     movie.directors && movie.directors.map(director => (
                       <CreditsDetails
