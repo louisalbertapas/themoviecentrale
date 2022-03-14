@@ -58,7 +58,7 @@ const MovieDetails: React.FC = () => {
                       <CreditsDetails
                         key={cast.id}
                         containerClass='p-2 sm:p-4'
-                        imageClass='pb-4'
+                        imageClass='border-2 border-indigo-400'
                         name={cast.name}
                         profile_path={cast.profile_path} />
                     ))
@@ -72,8 +72,8 @@ const MovieDetails: React.FC = () => {
                     movie.directors && movie.directors.map(director => (
                       <CreditsDetails
                         key={director.id}
-                        containerClass='p-4 sm:p-8'
-                        imageClass='pb-4'
+                        containerClass='p-2 sm:p-4'
+                        imageClass='border-2 border-indigo-400'
                         name={director.name}
                         profile_path={director.profile_path} />
                     ))
