@@ -54,7 +54,7 @@ const MovieDetails: React.FC = () => {
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-6 gap-2">
                   {
-                    movie.casts && movie.casts.map(cast => (
+                    movie.casts && movie.casts.filter(movie => movie.profile_path !== null).map(cast => (
                       <CreditsDetails
                         key={cast.id}
                         containerClass='p-2 sm:p-4'
