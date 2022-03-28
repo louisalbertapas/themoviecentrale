@@ -45,7 +45,9 @@ const Movies: React.FC = () => {
       <div className='px-5 sm:px-20 md:px-40 font-mono bg-slate-300 h-full'>
         <div className='mx-10 px-4'>
           <div className='text-center -mt-16'>
-            <SearchBar setSearchText={setSearchText} />
+            <SearchBar
+              setSearchText={setSearchText}
+              placeholder='Search for movies here...' />
           </div>
         </div>
         <div className='mt-5 flex flex-row flex-wrap justify-center'>
